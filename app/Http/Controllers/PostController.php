@@ -28,7 +28,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('cms.post.index')->with(['posts' => $this->postRepository->showAll()]);
+        return view('cms.post.index')->with([
+            'posts' => $this->postRepository->showAll(),
+            'tags' => $this->tagRepository->showAll(),
+            'total_tags' => $this->tagRepository->count()
+        ]);
     }
 
     /**

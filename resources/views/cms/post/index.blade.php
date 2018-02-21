@@ -14,6 +14,7 @@
     @endif
 
     <div class="row mb-2">
+        @if(count($posts) > 0)
         @foreach($posts as $post)
         <div class="col-md-6">
             <div class="card flex-md-row mb-4 box-shadow h-md-250">
@@ -37,7 +38,42 @@
             </div>
         </div>
         @endforeach
+        @else
+        <div class="col-md-6">
+        </div>
+        @endif
     </div>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-8 blog-main">
+          <h3 class="pb-3 mb-4 font-italic border-bottom">
+
+          </h3>
+
+
+
+        </div><!-- /.blog-main -->
+
+        <aside class="col-md-4 blog-sidebar">
+          <div class="p-3 mb-3 bg-light rounded">
+            <h4 class="font-italic">About</h4>
+            <p class="mb-0">My Blog, <em>Blog test</p>
+          </div>
+
+          <div class="p-3">
+            <h4 class="font-italic">Total Tags ({{$total_tags}})</h4>
+            <ol class="list-unstyled mb-0">
+                @foreach($tags as $tag)
+                    <li><a href="#">{{$tag->name}}</a> ({{$tag->posts()->count()}})</li>
+                @endforeach()
+            </ol>
+          </div>
+        </aside>
+
+      </div>
+
+    </main>
 
 @endsection
 

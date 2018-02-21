@@ -26,4 +26,9 @@ class TagRepository implements RepositoryInterface
     {
         return Tag::OfUuid($uuid)->first();
     }
+
+    public function count()
+    {
+        return Tag::count();
+    }
 }
