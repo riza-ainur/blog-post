@@ -9,6 +9,7 @@
 
     <title>BLOG TEST</title>
     <link rel="stylesheet" href="{{ asset("bootstrap/css/bootstrap.min.css") }}">
+    <link rel="stylesheet" href="{{ asset("bootstrap/css/bootstrap-multiselect.css") }}">
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("css/blog.css") }}">
 </head>
@@ -50,12 +51,20 @@
     <script>window.jQuery || document.write('<script src="{{ asset("js/jquery-slim.min.js") }}"><\/script>')</script>
     <script src="{{ asset("js/popper.min.js") }}"></script>
     <script src="{{ asset("bootstrap/js/bootstrap.min.js") }}"></script>
+    <script src="{{ asset("bootstrap/js/bootstrap-multiselect.js") }}"></script>
     <script src="{{ asset("js/holder.min.js") }}"></script>
     <script>
         Holder.addTheme('thumb', {
             bg: '#55595c',
             fg: '#eceeef',
             text: 'Thumbnail'
+        });
+    </script>
+
+    <script  type="text/javascript" charset="utf-8" async defer>
+        $(document).ready(function() {
+            $('.selectpicker').multiselect();
+
         });
     </script>
 

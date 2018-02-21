@@ -25,7 +25,8 @@ class StoreBlogPost extends FormRequest
     {
         return [
             'title' => 'required|unique:posts|max:150',
-            'photo' => 'required|max:1024|mimes:jpg,jpeg,png'
+            'photo' => 'required|max:1024|mimes:jpg,jpeg,png',
+            'tags' => 'required'
         ];
     }
 }

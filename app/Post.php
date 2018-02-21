@@ -20,4 +20,9 @@ class Post extends Model
     {
         return $query->where('uuid', $uuid);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }

@@ -7,14 +7,17 @@ use Uuid;
 use \Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreBlogPost;
+use App\Repositories\Tag\TagRepository;
 use App\Repositories\Post\PostRepository;
 
 class PostController extends Controller
 {
+    protected $tagRepository;
     protected $postRepository;
 
-    public function __construct(PostRepository $postRepository)
+    public function __construct(PostRepository $postRepository, TagRepository $tagRepository)
     {
+        $this->tagRepository = $tagRepository;
         $this->postRepository = $postRepository;
     }
 
@@ -35,7 +38,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('cms.post.create');
+        return view('cms.post.create')->with(['tags' => $this->tagRepository->showAll()]);
     }
 
     /**
@@ -65,7 +68,8 @@ class PostController extends Controller
                     'published_at' => Carbon::now()
                 ];
 
-                $this->postRepository->store($data);
+                $post = $this->postRepository->store($data);
+                $post->tags()->sync($request->tags);
 
                 DB::commit();
 

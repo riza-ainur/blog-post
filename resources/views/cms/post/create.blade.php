@@ -1,7 +1,6 @@
 @extends('pages.cms')
 @section('content')
 
-
 <form action="{{ url('posts') }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
     <h4>Create New Post</h4>
@@ -27,6 +26,15 @@
         </div>
 
         <div class="form-group">
+            <label for="tags">Tags</label>
+            <select name="tags[]" class="form-control selectpicker" multiple>
+                @foreach($tags as $tag)
+                <option value="{{$tag->id}}"> {{$tag->name}} </option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="form-group">
             <label for="photo">Photo</label>
             <input type="file" class="form-control" name="photo">
             <em><small>Not more than 1 MB and format only Jpg, Jpeg, and Png</small></em>
@@ -36,3 +44,8 @@
 </form>
 
 @endsection
+
+<script type="text/javascript" charset="utf-8" async defer>
+
+
+</script>

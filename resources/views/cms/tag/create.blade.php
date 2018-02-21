@@ -1,7 +1,6 @@
 @extends('pages.cms')
 @section('content')
 
-
 <form action="{{ url('tags') }}" method="POST">
     {{ csrf_field() }}
     <h4>Create New Post</h4>
